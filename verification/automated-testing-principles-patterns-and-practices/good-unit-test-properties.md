@@ -18,4 +18,16 @@
 * tests and asserts edge cases and different ranges of data
 * runs fast \(&lt; 100ms\)
 * is well-factored
-
+    
+## A unit test should have the following properties:
+* It should be automated and repeatable.
+* It should be easy to implement.
+* It should be relevant tomorrow.
+* Anyone should be able to run it at the push of a button.
+* It should run quickly.
+* It should be consistent in its results (it always returns the same result if you
+don’t change anything between runs).
+* It should have full control of the unit under test.
+* It should be fully isolated (runs independently of other tests).
+* When it fails, it should be easy to detect what was expected and determine how
+to pinpoint the problem.
