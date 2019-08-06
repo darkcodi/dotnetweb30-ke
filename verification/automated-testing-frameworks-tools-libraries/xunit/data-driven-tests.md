@@ -36,34 +36,6 @@ The `[InlineData]` attribute is great when your method parameters are constants,
 
 ### Using a dedicated data class with \[ClassData\]
 
-xUnit uses the `[Fact]` attribute to denote a parameterless unit test, which tests invariants in your code.
-
-In contrast, the `[Theory]` attribute denotes a parameterised test that is true for a subset of data. That data can be supplied in a number of ways, but the most common is with an `[InlineData]` attribute.
-
-The following example shows how you could rewrite the previous `CanAdd` test method to use the `[Theory]` attribute, and add some extra values to test:
-
-```csharp
-[Theory]
-[InlineData(1, 2, 3)]
-[InlineData(-4, -6, -10)]
-[InlineData(-2, 2, 0)]
-[InlineData(int.MinValue, -1, int.MaxValue)]
-public void CanAddTheory(int value1, int value2, int expected)
-{
-    var calculator = new Calculator();
-
-    var result = calculator.Add(value1, value2);
-
-    Assert.Equal(expected, result);
-}
-```
-
-Instead of specifying the values to add \(value1 and value2\) in the test body, we pass those values as parameters to the test. We also pass in the expected result of the calculation, to use in the Assert.Equal\(\) call.
-
-The data is provided by the \[InlineData\] attribute. Each instance of \[InlineData\] will create a separate execution of the CanAddTheory method. The values passed in the constructor of \[InlineData\] are used as the parameters for the method - the order of the parameters in the attribute matches the order in which they're supplied to the method.
-
-### Using a dedicated data class with \[ClassData\]
-
 If the values you need to pass to your \[Theory\] test aren't constants, then you can use an alternative attribute, \[ClassData\], to provide the parameters. This attribute takes a Type which xUnit will use to obtain the data:
 
 ```csharp
